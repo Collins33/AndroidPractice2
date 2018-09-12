@@ -5,7 +5,12 @@ var socket = io.connect('http://localhost:5000');
 var message = document.getElementById('message'),
       handle = document.getElementById('handle'),
       btn = document.getElementById('send'),
-      output = document.getElementById('output');
+      output = document.getElementById('output'),
+      feedback = document.getElementById('feedback');
+
+message.addEventListener('keypress', function(){
+    socket.emit('typing', handle.value);
+})
 
 // emit event when someone clicks send
 btn.addEventListener('click', function(){
